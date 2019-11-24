@@ -5,8 +5,10 @@ export const SPACEX_LOAD_SUCCESS = 'SPACEX_LOAD_SUCCESS';
 export const SPACEX_LOAD_FAIL = 'SPACEX_LOAD_FAIL';
 
 export const getSpaceX = () => dispatch => {
-  
-  // dispatch({ type: SPACEX_LOAD_START });
+
+  dispatch({
+    type: SPACEX_LOAD_START
+  })
 
   axios
   .get('https://api.spacexdata.com/v3/launches/upcoming') // https://api.spacexdata.com/v3
@@ -25,5 +27,4 @@ export const getSpaceX = () => dispatch => {
       payload: 'error loading data'
     })
   })
-  
 }

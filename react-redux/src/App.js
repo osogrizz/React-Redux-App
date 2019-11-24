@@ -21,8 +21,10 @@ function App(props) {
       ) : (
         props.launches.map( (launch, index) => (
           <div key={index}>
-            <h2>{launch.flight_number}</h2>
-            <p>{launch.mission_name}</p>
+            <h2>Flight #{launch.flight_number}</h2>
+            <p>Mission Name: {launch.mission_name}</p>
+            <p>Launch Site: {launch.launch_site.site_name_long}</p>
+            {launch.details && <p>details: {launch.details}</p>}
           </div>  
         ))
       )}
