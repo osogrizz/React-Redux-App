@@ -1,6 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getSpaceX } from '../actions';
+import Launch from './Launch';
+
+import './launches.scss';
 
 const Launches = (props) => {
   return (
@@ -8,21 +11,17 @@ const Launches = (props) => {
       <button onClick={() => props.getSpaceX() } >
         Get Launches
       </button>
+      <div className="launch-container">
+        {props.error && <div>{props.error}</div>}
 
-      {props.error && <div>{props.error}</div>}
-
-      {props.isLoading ? (
-        <div>Loading...</div> 
-      ) : (
-        props.launches.map( (launch, index) => (
-          <div key={index}>
-            <h2>Flight #{launch.flight_number}</h2>
-            <p>Mission Name: {launch.mission_name}</p>
-            <p>Launch Site: {launch.launch_site.site_name_long}</p>
-            {launch.details && <p>details: {launch.details}</p>}
-          </div>  
-        ))
-      )}
+        {props.isLoading ? (
+          <div>Loading...</div> 
+        ) : (
+          props.launches.map( (launch, index) => (
+            <Launch key={index} launch={launch} />
+          ))
+        )}
+      </div>
     </div>
   )
 }
