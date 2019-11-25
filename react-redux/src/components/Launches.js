@@ -8,7 +8,7 @@ import './launches.scss';
 const Launches = (props) => {
   return (
     <div>
-      <button onClick={() => props.getSpaceX() } >
+      <button onClick={() => props.getSpaceX() } className="Btn" >
         Get Launches
       </button>
       <div className="launch-container">
